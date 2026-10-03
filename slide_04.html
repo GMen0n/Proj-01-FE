@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FP—04 · One Question No System Answers</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  .f-display{font-family:var(--font-display);}
+  .f-head{font-family:var(--font-heading);}
+  .f-body{font-family:var(--font-body);}
+  .f-mono{font-family:var(--font-mono);}
+</style>
+</head>
+<body style="margin:0;">
+<div class="slide">
+  <!-- decor: butter star in clear zone below photo -->
+  <div data-decor aria-hidden="true" class="f-display absolute" style="font-size:36px;line-height:1;color:var(--butter);right:128px;top:262px;">✦</div>
+
+  <!-- decor: small duotone photo block top-right -->
+  <div style="position:absolute;top:88px;right:60px;width:212px;height:150px;">
+    <div class="img-tint frame-2 hard-sm" style="width:100%;height:100%;background:var(--bg);">
+      <img class="img-duo" src="https://z-cdn.chatglm.cn/image-search-mcp/images-ppt/4b9d092fa3b9.jpg" alt="Facility coupling detail" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+  </div>
+
+  <div class="absolute inset-0 flex flex-col" style="padding:50px 60px 48px 60px;">
+
+    <!-- kicker row -->
+    <div class="flex items-center justify-between">
+      <span class="frame-2 f-mono" style="display:inline-block;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--ink);">03 — PROBLEM / THE HARD DECISION</span>
+      <span class="f-mono" style="font-size:11px;letter-spacing:.12em;color:var(--ink);margin-right:252px;">FP—04 / 14</span>
+    </div>
+
+    <!-- heading -->
+    <div class="flex items-baseline" style="margin-top:16px;gap:16px;">
+      <h1 class="f-head" style="font-weight:700;font-size:40px;line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);max-width:900px;">ONE QUESTION NO SYSTEM ANSWERS JOINTLY</h1>
+    </div>
+
+    <div class="flex-1 flex flex-col justify-center" style="gap:26px;margin-top:8px;">
+
+      <!-- equation banner -->
+      <div class="panel-green frame hard" style="width:936px;padding:20px 26px;">
+        <p class="f-display" style="font-size:29px;line-height:1.2;letter-spacing:.01em;color:var(--paper);">REDUCE GRID DRAW BY <span style="color:var(--butter);">X kW</span> · FOR <span style="color:var(--butter);">Y MINUTES</span> ·<br>AT <span style="color:var(--butter);">Z RAMP</span> — WITHOUT CROSSING THE RESERVE.</p>
+        <p class="f-mono" style="font-size:12px;line-height:1.5;letter-spacing:.02em;color:var(--mint);margin-top:10px;">…while keeping enough thermal, electrical and operational reserve to satisfy the facility's reliability policy if a utility disturbance occurs.</p>
+      </div>
+
+      <!-- coupling chain 1x4 -->
+      <div class="flex items-stretch" style="gap:10px;">
+        <div class="frame hard-sm" style="background:var(--bg);padding:14px 15px;flex:1;">
+          <h3 class="f-head" style="font-weight:700;font-size:14.5px;line-height:1.25;text-transform:uppercase;color:var(--green);">COMPUTE <span style="color:var(--ink);">→</span> COOLING</h3>
+          <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.5;color:var(--ink);margin-top:8px;">An AI training or inference surge becomes heat; cooling responds on a different timescale. A job can look safe in server-power terms and still create a thermal or hydraulic constraint.</p>
+        </div>
+        <div class="flex items-center" style="width:26px;justify-content:center;"><span class="f-head" style="font-weight:700;font-size:28px;color:var(--green);">→</span></div>
+        <div class="frame hard-sm" style="background:var(--bg);padding:14px 15px;flex:1;">
+          <h3 class="f-head" style="font-weight:700;font-size:14.5px;line-height:1.25;text-transform:uppercase;color:var(--green);">COOLING <span style="color:var(--ink);">→</span> BATTERY</h3>
+          <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.5;color:var(--ink);margin-top:8px;">Pre-cooling or reduced pump demand buys short-duration flexibility — then thermal recovery reshapes the battery requirement and later load.</p>
+        </div>
+        <div class="flex items-center" style="width:26px;justify-content:center;"><span class="f-head" style="font-weight:700;font-size:28px;color:var(--green);">→</span></div>
+        <div class="frame hard-sm" style="background:var(--bg);padding:14px 15px;flex:1;">
+          <h3 class="f-head" style="font-weight:700;font-size:14.5px;line-height:1.25;text-transform:uppercase;color:var(--green);">BATTERY <span style="color:var(--ink);">→</span> GRID</h3>
+          <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.5;color:var(--ink);margin-top:8px;">UPS/BESS can shave a peak or smooth a ramp, but every discharge reduces the buffer available if the grid fails before recharge.</p>
+        </div>
+        <div class="flex items-center" style="width:26px;justify-content:center;"><span class="f-head" style="font-weight:700;font-size:28px;color:var(--green);">→</span></div>
+        <div class="frame hard-sm" style="background:var(--bg);padding:14px 15px;flex:1;">
+          <h3 class="f-head" style="font-weight:700;font-size:14.5px;line-height:1.25;text-transform:uppercase;color:var(--green);">GRID <span style="color:var(--ink);">→</span> COMPUTE</h3>
+          <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.5;color:var(--ink);margin-top:8px;">A tariff peak, outage alert or utility request changes the value of flexibility — uptime still needs a believable response.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- thin hazard bar -->
+    <div class="stripe" style="height:8px;width:100%;margin-top:16px;"></div>
+  </div>
+</div>
+
+<aside data-notes class="hidden" style="display:none">
+  <ul>
+    <li>ANIMATION — Morph; equation banner: Fade by line (title first, sub-line second); four cards: Wipe from left one per click with arrows Grow From Left With Previous.</li>
+    <li>DELIVERY — this is the question the whole project exists to answer; slow down here.</li>
+    <li>Read X, Y, Z aloud as one complete sentence before touching the four coupling cards.</li>
+    <li>Each card is a coupling that naive schedulers flatten — spend one sentence per card, follow the arrows.</li>
+    <li>Land the loop: the chain ends back at COMPUTE — decisions propagate in a circle, not a line.</li>
+  </ul>
+</aside>
+</body>
+</html>

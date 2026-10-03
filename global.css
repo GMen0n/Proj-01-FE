@@ -1,0 +1,92 @@
+/* ============================================================
+   FLEXIBILITY PASSPORT — ECO-BRUTALIST DESIGN SYSTEM
+   Palette: paper/charcoal monochrome + dark forest green
+            + sparse pastel mint & pale yellow
+   Type:    Anton (display) / Space Grotesk (headings)
+            Inter (body) / Space Mono (utility labels)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* palette */
+  --bg: #F0EEE6;            /* off-white paper */
+  --ink: #1D1D1B;           /* charcoal */
+  --green: #1A4D3A;         /* dark forest green (Schneider vibe) */
+  --green-deep: #10352A;    /* near-black green for poster slides */
+  --mint: #CDE3D3;          /* pastel mint */
+  --butter: #F2E8C5;        /* pale yellow */
+  --grey: #84847C;          /* mid grey */
+  --line: #CFCBBE;          /* hairline grey */
+  --paper: #F0EEE6;
+
+  /* typography tokens (families + scale only — applied per slide) */
+  --font-display: 'Anton', 'Arial Black', sans-serif;
+  --font-heading: 'Space Grotesk', 'Arial', sans-serif;
+  --font-body: 'Inter', 'Helvetica', sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
+  --fs-display: 84px;
+  --fs-h1: 40px;
+  --fs-h2: 25px;
+  --fs-h3: 17px;
+  --fs-body: 15px;
+  --fs-small: 12.5px;
+  --fs-micro: 10.5px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* canvas */
+.slide {
+  width: 1280px; height: 720px;
+  position: relative; overflow: hidden;
+  background: var(--bg); color: var(--ink);
+}
+.slide-dark { background: var(--green-deep); color: var(--paper); }
+
+/* brutalist structure */
+.frame   { border: 3px solid var(--ink); }
+.frame-2 { border: 2px solid var(--ink); }
+.frame-paper   { border: 3px solid var(--paper); }
+.hard      { box-shadow: 7px 7px 0 var(--ink); }
+.hard-sm   { box-shadow: 4px 4px 0 var(--ink); }
+.hard-paper{ box-shadow: 7px 7px 0 rgba(240,238,230,.92); }
+.hard-mint { box-shadow: 7px 7px 0 var(--mint); }
+
+/* surfaces */
+.panel-green { background: var(--green); color: var(--paper); }
+.panel-deep  { background: var(--green-deep); color: var(--paper); }
+.panel-mint  { background: var(--mint); color: var(--ink); }
+.panel-butter{ background: var(--butter); color: var(--ink); }
+.panel-grey  { background: #E4E1D6; color: var(--ink); }
+
+/* patterns & utility motifs */
+.stripe     { background-image: repeating-linear-gradient(45deg, var(--green) 0 10px, transparent 10px 20px); }
+.stripe-ink { background-image: repeating-linear-gradient(45deg, var(--ink) 0 8px, transparent 8px 16px); }
+.stripe-paper{ background-image: repeating-linear-gradient(45deg, var(--paper) 0 8px, transparent 8px 16px); }
+.barcode    { background-image: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 5px, var(--ink) 5px 9px, transparent 9px 12px); }
+.grid-bg    { background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 32px 32px; }
+.dotgrid    { background-image: radial-gradient(var(--grey) 1.2px, transparent 1.3px); background-size: 15px 15px; }
+.dotgrid-paper { background-image: radial-gradient(rgba(240,238,230,.4) 1.2px, transparent 1.3px); background-size: 15px 15px; }
+
+.vline { width: 3px; background: var(--ink); }
+.hline { height: 3px; background: var(--ink); }
+.hline-paper { height: 3px; background: var(--paper); }
+
+/* stamp badge (rotation via inline style) */
+.stamp {
+  display: inline-block; border: 3px solid var(--ink);
+  padding: 6px 14px; text-transform: uppercase;
+}
+.stamp-paper { border-color: var(--paper); }
+
+/* photo treatment: mono + green duotone */
+.img-duo { filter: grayscale(1) contrast(1.12) brightness(.92); }
+.img-tint { position: relative; overflow: hidden; }
+.img-tint::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--green); mix-blend-mode: multiply; opacity: .32;
+}
+
+/* highlighter underline for key words */
+.hl-mint { background: linear-gradient(transparent 58%, var(--mint) 58%, var(--mint) 94%, transparent 94%); }
+.hl-butter { background: linear-gradient(transparent 58%, var(--butter) 58%, var(--butter) 94%, transparent 94%); }

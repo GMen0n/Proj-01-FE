@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FP—03 · Owned Assets, Unusable Flexibility</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="global.css">
+<style>
+  .f-display{font-family:var(--font-display);}
+  .f-head{font-family:var(--font-heading);}
+  .f-body{font-family:var(--font-body);}
+  .f-mono{font-family:var(--font-mono);}
+</style>
+</head>
+<body style="margin:0;">
+<div class="slide">
+  <div class="absolute inset-0 flex flex-col" style="padding:50px 60px 48px 60px;">
+
+    <!-- kicker row -->
+    <div class="flex items-center justify-between">
+      <span class="frame-2 f-mono" style="display:inline-block;padding:6px 12px;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--ink);">02 — PROBLEM / THE RELIABILITY GAP</span>
+      <span class="f-mono" style="font-size:11px;letter-spacing:.12em;color:var(--ink);">FP—03 / 14</span>
+    </div>
+
+    <!-- heading -->
+    <div class="flex items-baseline" style="margin-top:16px;gap:16px;">
+      <h1 class="f-head" style="font-weight:700;font-size:40px;line-height:1.05;letter-spacing:.01em;text-transform:uppercase;color:var(--ink);">OWNED ASSETS. UNUSABLE FLEXIBILITY.</h1>
+      <span data-decor aria-hidden="true" class="f-display" style="font-size:34px;line-height:1;color:var(--butter);">✦</span>
+    </div>
+
+    <!-- hero statement panel -->
+    <div class="panel-mint frame hard" style="position:relative;margin-top:20px;padding:22px 26px;">
+      <p class="f-body" style="font-weight:600;font-size:19px;line-height:1.5;color:var(--ink);">A critical data centre already owns flexibility assets — but cannot confidently use them as one combined resource. It has no defensible way to translate live physical conditions into a safe, time-bound flexibility commitment.</p>
+      <span class="stamp f-mono" style="position:absolute;top:-18px;right:-14px;transform:rotate(7deg);background:var(--bg);color:var(--ink);font-size:12px;font-weight:700;letter-spacing:.14em;">VALIDATED</span>
+    </div>
+
+    <!-- ink strip -->
+    <div style="background:var(--ink);color:var(--paper);margin-top:16px;padding:11px 18px;">
+      <span class="f-mono" style="font-size:13px;letter-spacing:.14em;">THIS IS A RELIABILITY PROBLEM — NOT A MONITORING PROBLEM.</span>
+    </div>
+
+    <!-- evidence cards -->
+    <div class="grid grid-cols-3 items-stretch" style="gap:24px;margin-top:24px;">
+      <div class="frame hard-sm" style="background:var(--bg);padding:16px 18px;">
+        <div class="f-display" style="font-size:26px;line-height:1;color:var(--grey);">01</div>
+        <h3 class="f-head" style="font-weight:700;font-size:15px;line-height:1.25;text-transform:uppercase;color:var(--green);margin-top:8px;">PEAK-SHAVING EATS THE RESERVE</h3>
+        <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.52;color:var(--ink);margin-top:8px;">A battery action that pays during a peak erodes state-of-charge headroom and raises tail outage risk — the same battery cannot serve both masters. [R3][R12]</p>
+      </div>
+      <div class="frame hard-sm" style="background:var(--bg);padding:16px 18px;">
+        <div class="f-display" style="font-size:26px;line-height:1;color:var(--grey);">02</div>
+        <h3 class="f-head" style="font-weight:700;font-size:15px;line-height:1.25;text-transform:uppercase;color:var(--green);margin-top:8px;">COUPLING IS OVER-SIMPLIFIED</h3>
+        <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.52;color:var(--ink);margin-top:8px;">Demand-response models flatten the electrical, thermal and computational coupling that actually interacts inside a live facility. [R10]</p>
+      </div>
+      <div class="frame hard-sm" style="background:var(--bg);padding:16px 18px;">
+        <div class="f-display" style="font-size:26px;line-height:1;color:var(--grey);">03</div>
+        <h3 class="f-head" style="font-weight:700;font-size:15px;line-height:1.25;text-transform:uppercase;color:var(--green);margin-top:8px;">NO WHOLE-FACILITY ENVELOPE</h3>
+        <p class="f-body" style="font-weight:500;font-size:12.5px;line-height:1.52;color:var(--ink);margin-top:8px;">What MW reduction, duration, ramp and recovery can one facility safely promise as a single envelope? Still an open implementation question. [R3][R9][R10]</p>
+      </div>
+    </div>
+
+    <!-- footer strip with barcode -->
+    <div class="frame-2 flex items-center justify-between" style="margin-top:auto;padding:9px 14px;">
+      <span class="f-mono" style="font-size:11px;letter-spacing:.1em;color:var(--ink);"><span data-decor aria-hidden="true" style="color:var(--green);font-size:13px;">✦ </span>RESEARCH BASE — 15 PEER-REVIEWED PAPERS · LAB BENCHMARKS · INDIA POLICY RESEARCH [R1–R15]</span>
+      <div data-decor aria-hidden="true" class="barcode" style="width:140px;height:14px;"></div>
+    </div>
+  </div>
+</div>
+
+<aside data-notes class="hidden" style="display:none">
+  <ul>
+    <li>ANIMATION — Morph; statement panel Zoom In; ink strip Wipe from left; three cards Fly In from right, one per click; stamp Fade + Spin emphasis.</li>
+    <li>DELIVERY — read the mint statement verbatim; it is the thesis.</li>
+    <li>The ink strip is the reframe: monitoring already exists — a defensible, time-bound commitment does not.</li>
+    <li>One beat per evidence card; do not rush card 01 — reserve erosion is the judge's biggest fear.</li>
+    <li>Footer reminds the room the problem is grounded in 15 peer-reviewed papers, not anecdotes.</li>
+  </ul>
+</aside>
+</body>
+</html>

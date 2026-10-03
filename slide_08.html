@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>08 — Architecture: Five Layers</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;width:1280px;height:720px;overflow:hidden;background:var(--bg);}
+  .mono{font-family:var(--font-mono);}
+  .sg{font-family:var(--font-heading);}
+  .anton{font-family:var(--font-display);}
+  .kicker{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:6px 12px;background:var(--paper);}
+  .pg{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;color:#4E4E49;font-weight:700;}
+  .layernum{font-family:var(--font-mono);font-weight:700;font-size:21px;line-height:1;color:var(--ink);}
+  .layermicro{font-family:var(--font-mono);font-size:8px;font-weight:700;letter-spacing:.22em;color:#4E4E49;}
+  .layername{font-family:var(--font-heading);font-weight:700;font-size:16.5px;text-transform:uppercase;letter-spacing:.03em;}
+  .layerdesc{font-family:var(--font-body);font-weight:500;font-size:12.5px;line-height:1.42;}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="relative h-full flex flex-col" style="padding:42px 56px 40px;">
+
+    <!-- kicker row -->
+    <div class="flex items-center justify-between">
+      <span class="frame-2 kicker">07 — TECH / SYSTEM ARCHITECTURE</span>
+      <span class="pg">FP—08 / 14</span>
+    </div>
+    <div class="hline" style="margin-top:10px;"></div>
+
+    <!-- heading -->
+    <div class="flex items-end justify-between" style="margin-top:16px;">
+      <h1 class="sg" style="font-size:40px;line-height:1.02;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);">
+        FIVE LAYERS. <span style="color:var(--green);">ZERO CHANGES TO PROTECTION LOGIC.</span>
+      </h1>
+      <span data-decor aria-hidden="true" class="anton" style="font-size:26px;color:var(--butter);-webkit-text-stroke:1.5px var(--green);line-height:1;padding-bottom:4px;">✦</span>
+    </div>
+
+    <!-- main -->
+    <div class="flex-1 flex" style="gap:28px;margin-top:20px;min-height:0;">
+
+      <!-- ===== LEFT: vertical stack 05 → 01 ===== -->
+      <div class="flex flex-col justify-between" style="width:58%;gap:10px;">
+
+        <!-- 05 -->
+        <div class="panel-grey frame hard-sm flex items-stretch" style="flex:1;">
+          <div class="flex flex-col items-center justify-center" style="width:64px;border-right:3px solid var(--ink);">
+            <span class="layermicro">LAYER</span><span class="layernum">05</span>
+          </div>
+          <div class="flex flex-col justify-center" style="padding:9px 14px;">
+            <div class="layername" style="color:var(--ink);">VERIFICATION</div>
+            <p class="layerdesc" style="color:#33332F;margin-top:3px;">Compares promised vs delivered performance; records the minimum reserve actually maintained.</p>
+          </div>
+        </div>
+
+        <!-- 04 -->
+        <div class="frame hard-sm flex items-stretch" style="flex:1;background:var(--paper);">
+          <div class="flex flex-col items-center justify-center" style="width:64px;border-right:3px solid var(--ink);">
+            <span class="layermicro">LAYER</span><span class="layernum">04</span>
+          </div>
+          <div class="flex flex-col justify-center" style="padding:9px 14px;">
+            <div class="layername" style="color:var(--ink);">ACTION</div>
+            <p class="layerdesc" style="color:#33332F;margin-top:3px;">Time-bound plan + audit trail. Early pilot: read-only or bounded, operator-approved commands.</p>
+          </div>
+        </div>
+
+        <!-- 03 — highlighted core -->
+        <div class="panel-green frame hard-sm flex items-stretch" style="flex:1.15;">
+          <div class="flex flex-col items-center justify-center" style="width:64px;border-right:3px solid var(--paper);">
+            <span class="layermicro" style="color:rgba(240,238,230,.75);">LAYER</span><span class="layernum" style="color:var(--paper);">03</span>
+          </div>
+          <div class="flex flex-col justify-center" style="padding:9px 14px;">
+            <div class="flex items-center" style="gap:10px;">
+              <span class="layername" style="color:var(--paper);">FLEXIBILITY ENGINE</span>
+              <span data-decor aria-hidden="true" class="anton" style="font-size:13px;color:var(--butter);">✦</span>
+            </div>
+            <p class="layerdesc" style="color:rgba(240,238,230,.92);margin-top:3px;">Searches for the largest useful load reduction satisfying ALL hard constraints. Flexibility is <strong style="font-weight:700;color:var(--butter);">CONDITIONAL</strong> — never a fixed battery-size number.</p>
+          </div>
+        </div>
+
+        <!-- 02 -->
+        <div class="frame hard-sm flex items-stretch" style="flex:1;background:var(--paper);">
+          <div class="flex flex-col items-center justify-center" style="width:64px;border-right:3px solid var(--ink);">
+            <span class="layermicro">LAYER</span><span class="layernum">02</span>
+          </div>
+          <div class="flex flex-col justify-center" style="padding:9px 14px;">
+            <div class="layername" style="color:var(--ink);">STATE &amp; CONSTRAINTS</div>
+            <p class="layerdesc" style="color:#33332F;margin-top:3px;">Telemetry → operational state. Hard limits: electrical reserve · thermal · hydraulic · battery · workload criticality · recovery.</p>
+          </div>
+        </div>
+
+        <!-- 01 -->
+        <div class="panel-grey frame hard-sm flex items-stretch" style="flex:1.1;">
+          <div class="flex flex-col items-center justify-center" style="width:64px;border-right:3px solid var(--ink);">
+            <span class="layermicro">LAYER</span><span class="layernum">01</span>
+          </div>
+          <div class="flex flex-col justify-center" style="padding:9px 14px;">
+            <div class="layername" style="color:var(--ink);">INPUTS</div>
+            <p class="layerdesc" style="color:#33332F;margin-top:3px;">Grid load · IT/rack power · workload criticality · UPS/BESS SOC · generator state · cooling load &amp; flows · weather · water · tariff/event signals.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== RIGHT: the control logic ===== -->
+      <div class="flex flex-col" style="width:42%;gap:12px;">
+        <div class="panel-green frame hard flex-1 flex flex-col" style="padding:20px;">
+          <div class="flex items-center justify-between">
+            <div class="sg" style="font-weight:700;font-size:18px;text-transform:uppercase;letter-spacing:.03em;color:var(--paper);">THE CONTROL LOGIC</div>
+            <span data-decor aria-hidden="true" class="anton" style="font-size:15px;color:var(--butter);">✦</span>
+          </div>
+
+          <p class="mono" style="margin-top:12px;font-size:12px;line-height:1.5;color:var(--mint);">
+            <strong style="font-weight:700;">MAXIMISE</strong> usable grid reduction <strong style="font-weight:700;">SUBJECT TO:</strong>
+          </p>
+
+          <div style="margin-top:8px;">
+            <div class="flex items-center mono" style="gap:10px;padding:6.5px 0;border-bottom:1px solid rgba(240,238,230,.28);font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--paper);">
+              <span data-decor aria-hidden="true" style="font-size:7px;color:var(--mint);">■</span> minimum reliability reserve
+            </div>
+            <div class="flex items-center mono" style="gap:10px;padding:6.5px 0;border-bottom:1px solid rgba(240,238,230,.28);font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--paper);">
+              <span data-decor aria-hidden="true" style="font-size:7px;color:var(--mint);">■</span> thermal + hydraulic limits
+            </div>
+            <div class="flex items-center mono" style="gap:10px;padding:6.5px 0;border-bottom:1px solid rgba(240,238,230,.28);font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--paper);">
+              <span data-decor aria-hidden="true" style="font-size:7px;color:var(--mint);">■</span> battery operating limits
+            </div>
+            <div class="flex items-center mono" style="gap:10px;padding:6.5px 0;border-bottom:1px solid rgba(240,238,230,.28);font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--paper);">
+              <span data-decor aria-hidden="true" style="font-size:7px;color:var(--mint);">■</span> workload criticality
+            </div>
+            <div class="flex items-center mono" style="gap:10px;padding:6.5px 0;font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--paper);">
+              <span data-decor aria-hidden="true" style="font-size:7px;color:var(--mint);">■</span> recovery requirements
+            </div>
+          </div>
+
+          <div class="mt-auto" style="border-top:3px solid var(--paper);padding-top:12px;">
+            <p class="sg" style="font-weight:700;font-size:15.5px;line-height:1.35;color:var(--paper);">
+              OUTPUT ≠ "USE THE BATTERY" — OUTPUT = <span style="color:var(--butter);">A PORTFOLIO</span> across compute · cooling · storage.
+            </p>
+          </div>
+        </div>
+
+        <!-- note chip -->
+        <div class="frame-2" style="background:var(--paper);padding:9px 12px;">
+          <p class="mono" style="font-size:10.5px;font-weight:700;line-height:1.5;letter-spacing:.05em;color:var(--ink);">LAYERED SO IT CAN BE PROTOTYPED WITHOUT MODIFYING CRITICAL PROTECTION.</p>
+        </div>
+
+        <!-- thin hazard bar -->
+        <div class="frame-2 stripe" data-decor aria-hidden="true" style="height:10px;width:150px;align-self:flex-end;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<aside data-notes class="hidden" style="display:none">
+  <ul>
+    <li>ANIMATION — Morph; layer bars Fly In From Bottom stacked staggered 0.12s (05 first); right panel Fade after; punchline Bold Reveal / font emphasis.</li>
+    <li>DELIVERY — stress 'conditional, not a fixed number' — that single line separates this from every battery scheduler.</li>
+    <li>Walk the stack top-down 05→01: verify, act, compute, constrain, input — the engine layer 03 is the core.</li>
+    <li>Right panel is the math: constrained maximisation subject to five hard constraint families before any kW is promised.</li>
+    <li>Land the punchline: the output is a portfolio across compute · cooling · storage — never a bare 'use the battery' command.</li>
+  </ul>
+</aside>
+</body>
+</html>

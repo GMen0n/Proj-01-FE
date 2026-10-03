@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>06 — The Core Output: A Safe Flexibility Envelope</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;width:1280px;height:720px;overflow:hidden;background:var(--bg);}
+  .mono{font-family:var(--font-mono);}
+  .sg{font-family:var(--font-heading);}
+  .anton{font-family:var(--font-display);}
+  .kicker{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:6px 12px;background:var(--paper);}
+  .pg{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;color:#4E4E49;font-weight:700;}
+  .plabel{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.08em;color:#4E4E49;text-transform:uppercase;}
+  .pval{font-family:var(--font-body);font-weight:500;font-size:13.5px;line-height:1.35;color:var(--ink);}
+  .idx{font-family:var(--font-mono);font-size:9.5px;font-weight:700;color:var(--green);}
+</style>
+</head>
+<body>
+<div class="slide grid-bg">
+
+  <!-- decor: ghost outlined star, bottom-right bleed -->
+  <div data-decor aria-hidden="true" class="absolute anton" style="right:-52px;bottom:-92px;font-size:320px;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(26,77,58,.13);">✦</div>
+
+  <div class="relative h-full flex flex-col" style="padding:42px 56px 40px;">
+
+    <!-- kicker row -->
+    <div class="flex items-center justify-between">
+      <span class="frame-2 kicker">05 — SOLUTION / WHAT YOU GET</span>
+      <span class="pg">FP—06 / 14</span>
+    </div>
+    <div class="hline" style="margin-top:10px;"></div>
+
+    <!-- heading -->
+    <div class="flex items-end justify-between" style="margin-top:16px;">
+      <h1 class="sg" style="font-size:40px;line-height:1.02;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);">
+        THE CORE OUTPUT: <span style="color:var(--green);">A SAFE FLEXIBILITY ENVELOPE</span>
+      </h1>
+      <span data-decor aria-hidden="true" class="anton" style="font-size:36px;line-height:.9;color:var(--green);padding-bottom:3px;">→</span>
+    </div>
+
+    <!-- main -->
+    <div class="flex-1 flex" style="gap:32px;margin-top:22px;min-height:0;">
+
+      <!-- ============ PASSPORT CARD (58%) ============ -->
+      <section class="frame hard relative flex flex-col" style="width:58%;background:var(--paper);">
+        <!-- mint header bar -->
+        <div class="panel-mint flex items-center justify-between" style="border-bottom:3px solid var(--ink);padding:11px 16px;">
+          <div class="sg" style="font-weight:700;font-size:17.5px;letter-spacing:.02em;color:var(--ink);">
+            <span data-decor aria-hidden="true" style="color:var(--green);">✦ </span>FLEXIBILITY PASSPORT — FACILITY ID FP-001
+          </div>
+          <div class="barcode" data-decor aria-hidden="true" style="width:64px;height:16px;"></div>
+        </div>
+
+        <!-- 7 field rows -->
+        <div class="flex-1 flex flex-col" style="min-height:0;">
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;border-bottom:1px solid var(--line);">
+            <span class="idx" style="width:22px;">01</span>
+            <span class="plabel" style="width:214px;">MAX DEMAND REDUCTION</span>
+            <span class="pval" style="flex:1;">grid-demand ceiling in kW / MW</span>
+          </div>
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;border-bottom:1px solid var(--line);">
+            <span class="idx" style="width:22px;">02</span>
+            <span class="plabel" style="width:214px;">MAX SUSTAINABLE DURATION</span>
+            <span class="pval" style="flex:1;">minutes the envelope holds</span>
+          </div>
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;border-bottom:1px solid var(--line);">
+            <span class="idx" style="width:22px;">03</span>
+            <span class="plabel" style="width:214px;">MAX RAMP RATE</span>
+            <span class="pval" style="flex:1;">kW per minute</span>
+          </div>
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;border-bottom:1px solid var(--line);">
+            <span class="idx" style="width:22px;">04</span>
+            <span class="plabel" style="width:214px;">RECOVERY</span>
+            <span class="pval" style="flex:1;">expected recovery time + recovery load</span>
+          </div>
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;border-bottom:1px solid var(--line);">
+            <span class="idx" style="width:22px;">05</span>
+            <span class="plabel" style="width:214px;">LEVERS</span>
+            <span class="pval" style="flex:1;">flexible compute · cooling adjustments · charging changes · BESS/UPS discharge</span>
+          </div>
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;border-bottom:1px solid var(--line);">
+            <span class="idx" style="width:22px;">06</span>
+            <span class="plabel" style="width:214px;">PROTECTED RESERVE</span>
+            <span class="pval" style="flex:1;">contingency + reliability threshold that <strong style="font-weight:700;">cannot be crossed</strong></span>
+          </div>
+          <div class="flex-1 flex items-center" style="gap:12px;padding:6px 16px;">
+            <span class="idx" style="width:22px;">07</span>
+            <span class="plabel" style="width:214px;">CONFIDENCE</span>
+            <span class="pval" style="flex:1;">validation status of this commitment</span>
+          </div>
+        </div>
+
+        <!-- machine footer -->
+        <div class="flex items-center justify-between" style="border-top:3px solid var(--ink);padding:8px 16px;background:var(--paper);">
+          <div class="barcode" data-decor aria-hidden="true" style="width:150px;height:16px;"></div>
+          <span class="mono" style="font-size:9.5px;font-weight:700;letter-spacing:.18em;color:#4E4E49;">FP—001</span>
+        </div>
+      </section>
+
+      <!-- ============ ISSUED PANEL (42%) ============ -->
+      <section class="relative flex flex-col" style="width:42%;">
+        <div class="panel-butter frame hard relative flex-1 flex flex-col" style="padding:20px 20px 16px;">
+          <div class="flex items-center justify-between">
+            <div class="sg" style="font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.02em;color:var(--ink);">ISSUED — DEMO VALUES</div>
+            <span data-decor aria-hidden="true" class="anton" style="font-size:16px;color:var(--green);">✦</span>
+          </div>
+
+          <!-- hero value -->
+          <div style="margin-top:16px;">
+            <div class="flex items-baseline" style="gap:12px;">
+              <span class="anton" style="font-size:54px;line-height:.95;color:var(--green);letter-spacing:.01em;">420&nbsp;kW</span>
+              <span class="mono" style="font-size:13px;font-weight:700;letter-spacing:.1em;color:var(--ink);">FOR 18 MIN</span>
+            </div>
+          </div>
+
+          <!-- mono rows -->
+          <div style="margin-top:14px;border-top:3px solid var(--ink);">
+            <div class="flex items-center justify-between mono" style="padding:8px 2px;border-bottom:1px solid rgba(29,29,27,.28);font-size:13px;font-weight:700;color:var(--ink);">
+              <span>RAMP ≤ 150 kW/MIN</span><span data-decor aria-hidden="true" style="color:var(--green);">→</span>
+            </div>
+            <div class="flex items-center justify-between mono" style="padding:8px 2px;border-bottom:1px solid rgba(29,29,27,.28);font-size:13px;font-weight:700;color:var(--ink);">
+              <span>BESS RESERVE ≥ 42%</span><span data-decor aria-hidden="true" style="color:var(--green);">→</span>
+            </div>
+            <div class="flex items-center justify-between mono" style="padding:8px 2px;font-size:13px;font-weight:700;color:var(--ink);">
+              <span>RECOVERY ≤ 11 MIN</span><span data-decor aria-hidden="true" style="color:var(--green);">→</span>
+            </div>
+          </div>
+
+          <!-- footnote -->
+          <div class="mt-auto" style="border-top:1px solid rgba(29,29,27,.28);padding-top:9px;">
+            <p class="mono" style="font-size:9.5px;line-height:1.55;letter-spacing:.06em;color:#4E4E49;">ILLUSTRATIVE DEMO NUMBERS — NOT CLAIMS ABOUT A REAL SITE</p>
+          </div>
+        </div>
+
+        <!-- rotated stamp overlapping panel corner -->
+        <div class="stamp hard-sm" style="position:absolute;top:-18px;right:-14px;transform:rotate(-7deg);background:var(--paper);font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.12em;color:var(--ink);">
+          <span data-decor aria-hidden="true" style="color:var(--green);">✦</span> CONDITIONAL BY DESIGN
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<aside data-notes class="hidden" style="display:none">
+  <ul>
+    <li>ANIMATION — Morph; passport card Zoom In; the 7 rows Appear staggered top-to-bottom 0.08s on one click; butter panel Fade + subtle Spin (5deg) emphasis.</li>
+    <li>DELIVERY — 'Every commitment is issued like a document: bounded, signed, auditable.'</li>
+    <li>Walk the 7 fields in order — demand ceiling, duration, ramp, recovery, levers, protected reserve, confidence — the identity-document format IS the message.</li>
+    <li>Hammer field 06: the protected reserve is the contingency + reliability threshold that can never be crossed — that is the reliability contract.</li>
+    <li>Flag the demo values as illustrative before any judge asks about the 420 kW / 18 min figures.</li>
+  </ul>
+</aside>
+</body>
+</html>

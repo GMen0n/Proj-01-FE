@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280, initial-scale=1">
+<title>07 — Inside One Flexibility Event</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+  html,body{margin:0;padding:0;width:1280px;height:720px;overflow:hidden;background:var(--bg);}
+  .mono{font-family:var(--font-mono);}
+  .sg{font-family:var(--font-heading);}
+  .anton{font-family:var(--font-display);}
+  .kicker{font-family:var(--font-mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);padding:6px 12px;background:var(--paper);}
+  .pg{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;color:#4E4E49;font-weight:700;}
+  .stepnum{font-family:var(--font-display);font-size:62px;line-height:.9;color:var(--green);letter-spacing:.01em;}
+  .steptitle{font-family:var(--font-heading);font-weight:700;font-size:17px;text-transform:uppercase;letter-spacing:.03em;color:var(--ink);}
+  .stepbody{font-family:var(--font-body);font-weight:500;font-size:13px;line-height:1.5;color:#33332F;}
+  .arrowcell{display:flex;align-items:center;justify-content:center;}
+  .arrowcell span{font-family:var(--font-display);font-size:26px;color:var(--green);}
+</style>
+</head>
+<body>
+<div class="slide">
+  <div class="relative h-full flex flex-col justify-between" style="padding:42px 56px 40px;">
+
+    <!-- kicker row -->
+    <div>
+      <div class="flex items-center justify-between">
+        <span class="frame-2 kicker">06 — HOW IT WORKS / EVENT LOOP</span>
+        <span class="pg">FP—07 / 14</span>
+      </div>
+      <div class="hline" style="margin-top:10px;"></div>
+
+      <!-- heading -->
+      <div class="flex items-end justify-between" style="margin-top:16px;">
+        <h1 class="sg" style="font-size:40px;line-height:1.02;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;color:var(--ink);">
+          INSIDE ONE <span style="color:var(--green);">FLEXIBILITY EVENT</span>
+        </h1>
+        <span data-decor aria-hidden="true" class="anton" style="font-size:26px;color:var(--butter);-webkit-text-stroke:1.5px var(--green);line-height:1;padding-bottom:4px;">✦</span>
+      </div>
+    </div>
+
+    <!-- five-step strip -->
+    <div style="margin-top:8px;">
+      <div class="grid" style="grid-template-columns:1fr 26px 1fr 26px 1fr 26px 1fr 26px 1fr;align-items:stretch;">
+
+        <!-- 01 READ -->
+        <div class="frame hard-sm flex flex-col" style="background:var(--paper);padding:16px 14px;">
+          <div class="stepnum">01</div>
+          <div class="steptitle" style="margin-top:10px;">READ</div>
+          <p class="stepbody" style="margin-top:7px;">Facility state: load, criticality, cooling conditions, ambient, UPS/BESS state, generator status.</p>
+        </div>
+        <div class="arrowcell" data-decor aria-hidden="true"><span>→</span></div>
+
+        <!-- 02 COMPUTE -->
+        <div class="frame hard-sm flex flex-col" style="background:var(--paper);padding:16px 14px;">
+          <div class="stepnum">02</div>
+          <div class="steptitle" style="margin-top:10px;">COMPUTE</div>
+          <p class="stepbody" style="margin-top:7px;">Largest available safe envelope under current constraints.</p>
+        </div>
+        <div class="arrowcell" data-decor aria-hidden="true"><span>→</span></div>
+
+        <!-- 03 DISPATCH -->
+        <div class="frame hard-sm flex flex-col" style="background:var(--paper);padding:16px 14px;">
+          <div class="stepnum">03</div>
+          <div class="steptitle" style="margin-top:10px;">DISPATCH</div>
+          <p class="stepbody" style="margin-top:7px;">Coordinated plan: pre-cool within thermal limits · defer non-urgent batch job · pause non-critical charging · discharge only BESS energy above protected reserve.</p>
+        </div>
+        <div class="arrowcell" data-decor aria-hidden="true"><span>→</span></div>
+
+        <!-- 04 REJECT — THE GATE -->
+        <div class="panel-butter frame hard-sm relative flex flex-col" style="padding:16px 14px;">
+          <div class="stamp hard-sm" style="position:absolute;top:-16px;right:-10px;transform:rotate(-8deg);background:var(--paper);font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;color:var(--ink);">✦ THE GATE</div>
+          <div class="stepnum">04</div>
+          <div class="steptitle" style="margin-top:10px;color:var(--green);">REJECT</div>
+          <p class="stepbody" style="margin-top:7px;">Any plan breaching reserve, battery-health, temperature, water or workload-criticality constraints.</p>
+        </div>
+        <div class="arrowcell" data-decor aria-hidden="true"><span>→</span></div>
+
+        <!-- 05 VERIFY -->
+        <div class="frame hard-sm flex flex-col" style="background:var(--paper);padding:16px 14px;">
+          <div class="stepnum">05</div>
+          <div class="steptitle" style="margin-top:10px;">VERIFY</div>
+          <p class="stepbody" style="margin-top:7px;">Delivered vs promised: kW reduction, duration, minimum SOC, cooling temperatures, recovery time.</p>
+        </div>
+      </div>
+
+      <!-- caption aligned under block 04 -->
+      <div class="grid" style="grid-template-columns:1fr 26px 1fr 26px 1fr 26px 1fr 26px 1fr;margin-top:14px;">
+        <div style="grid-column:7 / 10;" class="mono">
+          <span style="font-size:11px;font-weight:700;letter-spacing:.05em;color:#4E4E49;"><span data-decor aria-hidden="true" style="color:var(--green);">↑</span> Step 04 is why reliability stays non-negotiable.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- bottom loop strip -->
+    <div class="flex items-center justify-center" style="border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);padding:11px 0;gap:16px;">
+      <span data-decor aria-hidden="true" class="anton" style="font-size:13px;color:var(--green);">✦</span>
+      <span class="mono" style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);">THE LOOP REPEATS — EVERY EVENT ISSUES, EXECUTES AND AUDITS A COMMITMENT.</span>
+      <span data-decor aria-hidden="true" class="anton" style="font-size:13px;color:var(--green);">✦</span>
+    </div>
+
+  </div>
+</div>
+
+<aside data-notes class="hidden" style="display:none">
+  <ul>
+    <li>ANIMATION — Morph; blocks 01→05 Wipe from left, one per click 0.3s; arrows Grow From Left With Previous; block 04 Pulse once after appearing.</li>
+    <li>DELIVERY — walk the strip left to right; land on 04: 'most software lacks this gate'.</li>
+    <li>Step 03 DISPATCH is a portfolio play — pre-cool, defer batch, pause charging, discharge only BESS energy above reserve — never battery-only.</li>
+    <li>Step 04 is a hard rejection gate, not a warning: plans that breach constraints never dispatch.</li>
+    <li>Close on the loop line: every event issues, executes and audits a commitment.</li>
+  </ul>
+</aside>
+</body>
+</html>
