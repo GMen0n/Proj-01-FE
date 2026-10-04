@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flexibility Passport</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F0EEE6;--ink:#1D1D1B;--g:#1A4D3A;--gd:#10352A;--mint:#CDE3D3;--bt:#F2E8C5;--gr:#5C5C56}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;background:#141412;overflow:hidden}
+#deck{position:fixed;left:50%;top:50%;width:1280px;height:720px;margin:-360px 0 0 -640px;transform-origin:center}
+.s{position:absolute;inset:0;display:none;overflow:hidden;background:var(--bg);color:var(--ink);font:500 16px/1.5 Inter,Arial,sans-serif;padding:38px 64px}
+.s.on{display:block}
+#deck.fw .s.on{animation:inF .6s cubic-bezier(.2,.8,.2,1)}#deck.bk .s.on{animation:inB .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){*,::before{animation:none!important}}
+.s:not(.dk)::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(26,77,58,.11) 1px,transparent 1px),linear-gradient(90deg,rgba(26,77,58,.11) 1px,transparent 1px);background-size:32px 32px}
+.s>*{position:relative;z-index:1}
+.ab{position:absolute}
+.dk{background:var(--gd);color:var(--bg)}
+.A{font-family:Anton,'Arial Black',sans-serif;font-weight:400;text-transform:uppercase}
+.G{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700}
+.M{font-family:'Space Mono',monospace}
+.hd{display:flex;justify-content:space-between;font:700 11.5px 'Space Mono',monospace;letter-spacing:.13em;text-transform:uppercase;padding-bottom:9px;border-bottom:3px solid currentColor}
+.dk .hd .n{color:var(--mint)}
+.t{font:400 50px/1.02 Anton,sans-serif;text-transform:uppercase;margin-top:20px}
+.sub{font-size:16px;color:var(--gr);margin-top:8px;max-width:900px}
+.dk .sub{color:var(--mint)}
+.card{border:3px solid var(--ink);background:var(--bg);box-shadow:5px 5px 0 var(--ink);padding:14px 18px}
+.num{font:700 12px 'Space Mono',monospace;color:var(--g);letter-spacing:.06em}
+.h{font:700 17px/1.2 'Space Grotesk',sans-serif;text-transform:uppercase;letter-spacing:.03em}
+.b{font-size:14.5px;line-height:1.45;color:#33332F}
+.src{position:absolute;left:64px;right:64px;bottom:22px;font:400 11.5px 'Space Mono',monospace;color:var(--gr);display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;z-index:2}
+.src b{letter-spacing:.12em}
+.src a{color:var(--g);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+.dk .src,.dk .src a{color:var(--mint)}
+.pill{border:2px solid currentColor;padding:7px 14px;font:700 12px 'Space Mono',monospace;letter-spacing:.07em;white-space:nowrap}
+.stripe{height:12px;background:repeating-linear-gradient(45deg,var(--bg) 0 8px,transparent 8px 16px)}
+.bar{background:repeating-linear-gradient(90deg,var(--bg) 0 2px,transparent 2px 5px,var(--bg) 5px 9px,transparent 9px 12px)}
+.dots{background-image:radial-gradient(rgba(240,238,230,.4) 1.3px,transparent 1.4px);background-size:15px 15px}
+.hl{background:linear-gradient(transparent 58%,var(--bt) 58%,var(--bt) 94%,transparent 94%)}
+.out{color:transparent;-webkit-text-stroke:3px var(--bg)}
+#pg{position:fixed;left:0;top:0;height:4px;background:#CDE3D3;width:0;transition:width .3s;z-index:9}
+.nav{position:fixed;right:14px;bottom:12px;display:flex;gap:6px;z-index:9;opacity:.35}
+.nav:hover{opacity:1}
+.nav button{width:34px;height:34px;background:#1D1D1B;color:#F0EEE6;border:2px solid #F0EEE6;font:700 18px 'Space Mono',monospace;cursor:pointer}
+.s.dk::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(240,238,230,.16) 1.3px,transparent 1.4px);background-size:16px 16px}
+[data-k]{font-variant-numeric:tabular-nums}
+.arw{position:absolute;width:34px;height:34px;display:flex;align-items:center;justify-content:center;background:var(--g);color:var(--bg);border:3px solid var(--ink);font:700 18px/1 'Space Grotesk',sans-serif;z-index:3}
+.arw.d{transform:rotate(90deg)}.arw.l{transform:rotate(180deg)}.arw.u{transform:rotate(-90deg)}
+.hb{display:inline-block;background:var(--bt);color:var(--gd);padding:0 14px;margin-bottom:6px}
+.s9 .card{padding:15px 20px}.s9 .b{font-size:15.5px;line-height:1.45;margin-top:4px}
+.big{font:400 84px/1 Anton,sans-serif;color:var(--g)}.lb{font:700 11px 'Space Mono',monospace;letter-spacing:.12em;color:var(--gr)}
+.tc{display:flex;flex-direction:column;padding:18px 20px}.tc .h{font-size:18px;margin:4px 0 6px}.tc .b{font-size:14.5px}.tc .M{margin-top:auto;border-top:2px solid var(--ink);padding-top:8px;font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--g)}
+@keyframes inF{from{opacity:0;transform:translateX(90px) scale(.985)}}
+@keyframes inB{from{opacity:0;transform:translateX(-90px) scale(.985)}}
+@keyframes up{from{opacity:0;transform:translateY(26px)}}
+@keyframes dr{to{background-position:32px 32px}}@keyframes dr2{to{background-position:16px 16px}}
+@keyframes rot{to{transform:rotate(360deg)}}
+@keyframes hot{0%,32%,100%{background:var(--g);color:var(--bg)}8%,22%{background:var(--bt);color:var(--ink)}}
+@keyframes gate{50%{box-shadow:8px 8px 0 var(--bt)}}
+@keyframes hint{0%,80%{opacity:1}100%{opacity:0}}
+.s.on .rv{animation:up .7s both cubic-bezier(.2,.8,.2,1);animation-delay:var(--d,0ms)}
+.s.on .gate{animation:up .7s both cubic-bezier(.2,.8,.2,1) var(--d,0ms),gate 2.4s ease-in-out 1.8s infinite}
+.s.on .arw{animation:hot 3.2s ease-in-out infinite}
+.s:not(.dk)::before{animation:dr 40s linear infinite}.s.dk::before{animation:dr2 30s linear infinite}
+.sp{display:inline-block;animation:rot 16s linear infinite}
+.tilt{transition:transform .2s ease-out}
+#hint{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);background:#1D1D1B;color:#F0EEE6;border:2px solid #CDE3D3;font:700 12px 'Space Mono',monospace;letter-spacing:.08em;padding:8px 14px;pointer-events:none;z-index:9;animation:hint 5s both}
+#tut{position:fixed;inset:0;z-index:99;display:flex;align-items:center;justify-content:center;background:rgba(16,53,42,.93);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#tut.x{display:none}
+.tbx{width:min(640px,92vw);background:#F0EEE6;color:#1D1D1B;border:4px solid #1D1D1B;box-shadow:10px 10px 0 #CDE3D3;padding:26px 32px 28px;font:500 15px/1.45 Inter,sans-serif;animation:up .6s both cubic-bezier(.2,.8,.2,1)}
+.tk{font:700 11px 'Space Mono',monospace;letter-spacing:.14em;color:#1A4D3A}
+.tbx h2{font:400 44px/1 Anton,sans-serif;text-transform:uppercase;margin:6px 0 14px}
+.tr{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:2px solid #1D1D1B}
+.tr p{margin-left:8px;color:#33332F}
+.kc{min-width:36px;text-align:center;padding:5px 9px;border:2px solid #1D1D1B;box-shadow:2px 2px 0 #1D1D1B;background:#F2E8C5;font:700 13px 'Space Mono',monospace;flex:none}
+#go{margin-top:16px;width:100%;background:#1A4D3A;color:#F0EEE6;border:3px solid #1D1D1B;padding:14px;font:700 13px 'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+#go b{color:#F2E8C5}#go span{animation:bl 1.1s steps(2) infinite}@keyframes bl{50%{opacity:.15}}
+</style></head><body>
+<div id="pg"></div><div id="tut" role="dialog" aria-modal="true" aria-label="How to present"><div class="tbx">
+<div class="tk">HOW TO PRESENT</div><h2>Flexibility Passport</h2>
+<div class="tr"><span class="kc">←</span><span class="kc">→</span><p>Previous / next slide. Space and Page Up / Down work too.</p></div>
+<div class="tr"><span class="kc">Home</span><span class="kc">End</span><p>Jump to the first / last slide.</p></div>
+<div class="tr"><span class="kc">F</span><p>Toggle fullscreen — best for presenting.</p></div>
+<div class="tr"><span class="kc">Swipe</span><p>On touch screens, swipe left or right.</p></div>
+<div class="tr"><span class="kc">Mouse</span><p>Move over the passport cards to tilt them. Source links open in a new tab.</p></div>
+<div class="tr"><span class="kc">?</span><p>Reopen this guide at any time.</p></div>
+<button id="go">Press <b>Enter</b> to begin <span>▍</span></button></div></div>
+<svg width="0" height="0" style="position:absolute"><symbol id="p" viewBox="0 0 100 100"><circle cx="50" cy="36" r="17"/><path d="M14 98c0-24 15-38 36-38s36 14 36 38z"/></symbol></svg>
+<div id="deck">
+
+<!-- 01 TITLE -->
+<section class="s dk on">
+<div class="hd"><span>Schneider Electric — Yuva Yodha Energy Tech Hackathon 2026</span><span class="n">FP—01 / 12</span></div>
+<div class="ab dots" style="right:40px;bottom:190px;width:300px;height:190px"></div>
+<div class="ab A sp" style="left:690px;top:300px;font-size:90px;line-height:1;color:var(--bt)">✦</div>
+<div class="ab" style="left:64px;top:104px;width:760px">
+<div class="A" style="font-size:128px;line-height:.95">Flexibility</div>
+<div class="A out" style="font-size:128px;line-height:.95">Passport</div>
+<p class="G" style="font-size:23px;line-height:1.3;color:var(--mint);max-width:600px;margin-top:20px">Reliability-constrained energy flexibility for Indian data centres</p>
+<div style="display:flex;gap:12px;margin-top:26px"><span class="pill">PEAK-SHAVE WITHOUT FEAR</span><span class="pill">DIESEL AVOIDANCE</span><span class="pill">UPTIME PROTECTED</span></div>
+<p class="M" style="font-size:12px;letter-spacing:.1em;color:var(--mint);margin-top:22px">INDIAN DC CAPACITY 1.5 GW → 6.5 GW · 2025–2030</p>
+</div>
+<div class="ab" style="right:64px;top:128px;width:350px;transform:rotate(2deg)">
+<div class="tilt" style="border:3px solid var(--bg);box-shadow:8px 8px 0 var(--bg);background:var(--g);padding:22px 24px">
+<div class="M" style="font-size:11px;letter-spacing:.12em;color:var(--mint)">FLEXIBILITY PASSPORT · FP-001</div>
+<div class="A" style="font-size:84px;line-height:1.05;color:var(--bt);margin-top:8px"><span data-k="0">420</span> kW</div>
+<div class="M" style="font-size:12px;letter-spacing:.08em">FOR <span data-k="1">18</span> MIN · RAMP ≤ <span data-k="2">150</span> kW/MIN</div>
+<div class="bar" style="height:20px;margin-top:16px"></div></div>
+<span class="M" style="position:absolute;top:-16px;left:-18px;transform:rotate(-7deg);background:var(--gd);border:3px solid var(--bg);padding:5px 12px;font-size:11px;font-weight:700;letter-spacing:.12em">ISSUED — DEMO VALUES</span></div>
+<div class="ab stripe" style="left:64px;right:64px;bottom:96px"></div>
+<div class="ab M" style="left:64px;right:64px;bottom:34px;border:2px solid var(--bg);padding:13px 18px;font-size:13px;letter-spacing:.04em">TEAM &lt;team_name&gt; &nbsp;·&nbsp; PES UNIVERSITY &nbsp;·&nbsp; DHRUV · DIVYANSH · GAUTAM</div>
+</section>
+
+<!-- 02 TEAM -->
+<section class="s">
+<div class="hd"><span>The team</span><span>FP—02 / 12</span></div>
+<h1 class="t">The people behind the passport</h1>
+<p class="sub M" style="font-size:14px">&lt;team_name&gt; · PES University</p>
+<div style="display:flex;gap:30px;margin-top:26px">
+<div class="card" style="flex:1;padding:0"><div style="height:250px;background:repeating-linear-gradient(45deg,var(--mint) 0 12px,#DCEBE0 12px 24px);border-bottom:3px solid var(--ink);display:flex;align-items:flex-end;justify-content:center;position:relative"><svg width="190" height="190" fill="var(--g)" opacity=".85"><use href="#p"/></svg><span class="M ab" style="left:10px;top:10px;font-size:10px;letter-spacing:.12em;font-weight:700">PHOTO PLACEHOLDER</span></div>
+<div style="padding:16px 20px 20px"><div class="A" style="font-size:32px">Dhruv</div><div class="num" style="margin:2px 0 8px">[ROLE / FOCUS AREA]</div><p class="b">Placeholder — two lines on background, what they built for this project and why data-centre reliability matters to them.</p></div></div>
+<div class="card" style="flex:1;padding:0"><div style="height:250px;background:repeating-linear-gradient(45deg,var(--bt) 0 12px,#F7F0D6 12px 24px);border-bottom:3px solid var(--ink);display:flex;align-items:flex-end;justify-content:center;position:relative"><svg width="190" height="190" fill="var(--g)" opacity=".85"><use href="#p"/></svg><span class="M ab" style="left:10px;top:10px;font-size:10px;letter-spacing:.12em;font-weight:700">PHOTO PLACEHOLDER</span></div>
+<div style="padding:16px 20px 20px"><div class="A" style="font-size:32px">Divyansh</div><div class="num" style="margin:2px 0 8px">[ROLE / FOCUS AREA]</div><p class="b">Placeholder — two lines on background, what they built for this project and why data-centre reliability matters to them.</p></div></div>
+<div class="card" style="flex:1;padding:0"><div style="height:250px;background:repeating-linear-gradient(45deg,var(--mint) 0 12px,#DCEBE0 12px 24px);border-bottom:3px solid var(--ink);display:flex;align-items:flex-end;justify-content:center;position:relative"><svg width="190" height="190" fill="var(--g)" opacity=".85"><use href="#p"/></svg><span class="M ab" style="left:10px;top:10px;font-size:10px;letter-spacing:.12em;font-weight:700">PHOTO PLACEHOLDER</span></div>
+<div style="padding:16px 20px 20px"><div class="A" style="font-size:32px">Gautam</div><div class="num" style="margin:2px 0 8px">[ROLE / FOCUS AREA]</div><p class="b">Placeholder — two lines on background, what they built for this project and why data-centre reliability matters to them.</p></div></div>
+</div>
+</section>
+
+<!-- 03 PROBLEM -->
+<section class="s">
+<div class="hd"><span>01 — Problem / scale + reliability gap</span><span>FP—03 / 12</span></div>
+<div class="ab" style="left:64px;top:84px;width:440px;height:575px;display:flex;flex-direction:column;justify-content:space-between">
+<div><div class="lb">INSTALLED CAPACITY</div><div class="big" style="margin-top:6px">1.5 → 6.5</div><p class="G" style="font-size:19px;margin-top:6px">GW of data-centre capacity, 2025 → 2030</p></div>
+<div style="border-top:3px solid var(--ink);padding-top:20px"><div class="lb">SHARE OF NATIONAL ELECTRICITY</div><div class="big" style="margin-top:6px">0.5 → 1%+</div><p class="G" style="font-size:19px;margin-top:6px">2025 → 2030 — projected to more than double</p></div>
+<div style="border-top:3px solid var(--ink);padding-top:20px"><div class="lb">COOLING WATER DRAWN</div><div class="big" style="margin-top:6px">150 → 300+</div><p class="G" style="font-size:19px;margin-top:6px">billion litres, 2025 → 2030 — also more than doubling</p></div>
+</div>
+<div class="ab" style="left:560px;top:84px;width:656px">
+<p style="font-size:16px;color:#33332F;margin-top:14px">Every new megawatt lands on a grid already stressing reliability, water and storage. Operators own the batteries, cooling and compute to help — but have no defensible way to turn live conditions into a safe, time-bound commitment.</p>
+<div style="display:flex;gap:14px;align-items:flex-start;margin:18px 0 20px"><div class="A" style="font-size:44px;line-height:1.05">Reliability problem, <span class="hl">not a monitoring problem.</span></div><span class="M" style="border:2px solid var(--ink);padding:2px 7px;font-size:10px;font-weight:700;letter-spacing:.14em;color:var(--g);background:var(--bg);margin-top:6px">VALIDATED</span></div>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div class="card" style="display:flex;gap:16px"><span class="num">01</span><div><div class="h" style="font-size:15px">Peak-shaving eats the reserve</div><p class="b">A battery action that pays at the peak erodes state-of-charge headroom and raises tail outage risk.</p></div></div>
+<div class="card" style="display:flex;gap:16px"><span class="num">02</span><div><div class="h" style="font-size:15px">Coupling is over-simplified</div><p class="b">Demand-response models flatten the electrical, thermal and computational coupling inside a live facility.</p></div></div>
+<div class="card" style="display:flex;gap:16px"><span class="num">03</span><div><div class="h" style="font-size:15px">No whole-facility envelope</div><p class="b">What reduction, duration, ramp and recovery can one facility safely promise? Still an open question.</p></div></div>
+</div></div>
+<div class="src" data-r="R1 R3 R9 R10 R12"></div>
+</section>
+
+<!-- 04 HARD DECISION -->
+<section class="s">
+<div class="hd"><span>02 — Problem / the hard decision</span><span>FP—04 / 12</span></div>
+<div class="ab" style="left:64px;top:96px;width:440px;height:564px;display:flex;flex-direction:column;justify-content:space-between">
+<div><h1 class="t" style="font-size:46px;margin-top:0">One question no system answers jointly</h1>
+<p class="G" style="font-size:28px;line-height:1.3;margin-top:22px">Reduce grid draw by <span class="hl">X kW</span> for <span class="hl">Y minutes</span> at <span class="hl">Z ramp</span> — without crossing the reserve.</p>
+<p class="b" style="margin-top:16px;font-size:15.5px">…while keeping enough thermal, electrical and operational reserve to satisfy the facility's reliability policy if a utility disturbance occurs.</p></div>
+<div style="background:var(--gd);color:var(--bg);border:3px solid var(--ink);box-shadow:6px 6px 0 var(--mint);padding:18px 22px"><div class="M" style="font-size:11px;letter-spacing:.14em;color:var(--mint)">WHY IT'S HARD</div><p class="G" style="font-size:18px;line-height:1.35;margin-top:6px">Each subsystem is optimised alone. Nobody owns the joint answer.</p></div></div>
+<div class="ab" style="left:560px;top:96px;width:656px;height:564px">
+<div style="display:grid;grid-template-columns:298px 298px;grid-template-rows:252px 252px;gap:60px"><div class="card tc" style="background:var(--mint)"><div class="num">01 · COMPUTE → COOLING</div><div class="h">Surge becomes heat</div><p class="b">An AI surge becomes heat; cooling answers on a different timescale. Safe in server-power terms, binding in thermal terms.</p><div class="M">BINDS ON · THERMAL + HYDRAULIC LIMITS</div></div><div class="card tc"><div class="num">02 · COOLING → BATTERY</div><div class="h">Pre-cooling has a bill</div><p class="b">Pre-cooling buys short-duration flexibility — then thermal recovery reshapes the battery requirement and later load.</p><div class="M">BINDS ON · RECOVERY LOAD</div></div><div class="card tc"><div class="num">04 · GRID → COMPUTE</div><div class="h">Price changes the answer</div><p class="b">A tariff peak, outage alert or utility request changes what flexibility is worth. Uptime still needs a believable response.</p><div class="M">BINDS ON · WORKLOAD CRITICALITY</div></div><div class="card tc"><div class="num">03 · BATTERY → GRID</div><div class="h">Every discharge is borrowed</div><p class="b">UPS/BESS can shave a peak or smooth a ramp — but every discharge shrinks the buffer if the grid fails before recharge.</p><div class="M">BINDS ON · PROTECTED RESERVE</div></div></div>
+<div class="arw" style="left:311px;top:109px">→</div><div class="arw d" style="left:490px;top:265px;animation-delay:.8s">→</div><div class="arw l" style="left:311px;top:421px;animation-delay:1.6s">→</div><div class="arw u" style="left:132px;top:265px;animation-delay:2.4s">→</div>
+<div class="ab" style="left:293px;top:247px;width:70px;height:70px;border-radius:50%;background:var(--bt);border:3px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:3"><span class="G sp" style="font-size:24px;line-height:1">↻</span><span class="M" style="font-size:9.5px;font-weight:700;letter-spacing:.1em">LOOP</span></div>
+</div>
+<div class="src" data-r="R8 R10 D5"></div>
+</section>
+
+<!-- 05 SOLUTION + EVENT LOOP -->
+<section class="s dk">
+<div class="hd"><span>03 — Solution / how one event runs</span><span class="n">FP—05 / 12</span></div>
+<div class="A" style="font-size:96px;line-height:1;margin-top:30px">Flexibility <span class="out" style="font-size:96px">Passport</span></div>
+<p class="G" style="font-size:27px;color:var(--mint);margin-top:14px;max-width:900px;line-height:1.3">The decision layer that issues your facility's flexibility commitment.</p>
+<p class="M" style="font-size:13px;letter-spacing:.08em;margin-top:16px">TELEMETRY IN → SAFE ENVELOPE → TIME-BOUND COMMITMENT → VERIFIED DELIVERY</p>
+<div style="display:flex;gap:30px;margin-top:70px;align-items:stretch">
+<style>.st{flex:1;border:2px solid var(--bg);padding:16px 16px 18px;position:relative}.st:not(:last-child)::after{content:'→';position:absolute;right:-34px;top:50%;margin-top:-17px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--gd);border:3px solid var(--gd);font:700 18px/1 'Space Grotesk',sans-serif}.st .M{font-size:11.5px;color:var(--mint);letter-spacing:.1em}.st .G{font-size:21px;margin:4px 0 6px}.st p{font-size:14px;line-height:1.4}</style>
+<div class="st"><div class="M">01</div><div class="G">READ</div><p>Load, criticality, cooling, UPS/BESS and generator state.</p></div>
+<div class="st"><div class="M">02</div><div class="G">COMPUTE</div><p>The largest safe envelope under current constraints.</p></div>
+<div class="st"><div class="M">03</div><div class="G">DISPATCH</div><p>Pre-cool, defer batch jobs, pause charging, discharge only above reserve.</p></div>
+<div class="st gate" style="flex:1.25;background:var(--bt);color:var(--ink);border:3px solid var(--bt);margin-top:-18px;margin-bottom:-18px;box-shadow:7px 7px 0 var(--mint)"><div class="M" style="color:var(--g);font-weight:700">04 · THE GATE ✦</div><div class="G" style="font-size:27px">REJECT</div><p style="font-weight:600">Any plan that breaches reserve, battery, temperature, water or criticality limits.</p></div>
+<div class="st"><div class="M">05</div><div class="G">VERIFY</div><p>Delivered vs promised: kW, duration, minimum SOC, recovery.</p></div>
+</div>
+<p class="M" style="margin-top:44px;font-size:12.5px;letter-spacing:.06em;color:var(--mint)">↑ Step 04 is why reliability stays non-negotiable. Read-only first · bounded commands later · facility policy always authoritative.</p>
+<div class="src" data-r="D4 R3"></div>
+</section>
+
+<!-- 06 OUTPUT -->
+<section class="s">
+<div class="hd"><span>04 — Solution / what you get</span><span>FP—06 / 12</span></div>
+<h1 class="t">The output: a safe flexibility envelope</h1>
+<div class="ab" style="left:64px;top:158px;width:640px">
+<style>.f{display:flex;gap:14px;padding:13px 0;border-bottom:1.5px solid var(--ink);align-items:baseline}.f b{font:700 14px 'Space Grotesk';text-transform:uppercase;width:240px;flex:none}.f span:last-child{color:#33332F;font-size:14px;line-height:1.35}.cl{flex:1;border:3px solid var(--ink);padding:13px 18px}.cl p{font-size:13.5px;line-height:1.4;margin-top:2px}</style>
+<div class="f"><span class="num">01</span><b>Max demand reduction</b><span>Grid-demand ceiling, kW / MW</span></div>
+<div class="f"><span class="num">02</span><b>Max sustainable duration</b><span>Minutes the envelope holds</span></div>
+<div class="f"><span class="num">03</span><b>Max ramp rate</b><span>kW per minute</span></div>
+<div class="f"><span class="num">04</span><b>Recovery</b><span>Expected recovery time + recovery load</span></div>
+<div class="f"><span class="num">05</span><b>Levers</b><span>Flexible compute · cooling · charging · BESS/UPS</span></div>
+<div class="f"><span class="num">06</span><b>Protected reserve</b><span>The reliability threshold that cannot be crossed</span></div>
+<div class="f"><span class="num">07</span><b>Confidence</b><span>Validation status of this commitment</span></div></div>
+<div class="ab" style="left:748px;top:170px;width:468px;transform:rotate(1.2deg)">
+<div class="tilt" style="background:var(--g);color:var(--bg);border:3px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:22px 28px">
+<div class="M" style="font-size:11px;letter-spacing:.12em;color:var(--mint);display:flex;justify-content:space-between"><span>FLEXIBILITY PASSPORT</span><span>FP—001</span></div>
+<div class="A" style="font-size:92px;line-height:1.1;color:var(--bt);margin-top:8px"><span data-k="0">420</span> kW</div>
+<div class="G" style="font-size:20px;margin-bottom:12px">for <span data-k="1">18</span> min</div>
+<div class="M" style="font-size:12.5px;line-height:1.9;border-top:2px solid var(--mint);padding-top:10px">RAMP ≤ <span data-k="2">150</span> KW/MIN<br>BESS RESERVE ≥ <span data-k="3">42</span>%<br>RECOVERY ≤ <span data-k="4">11</span> MIN</div>
+<div class="bar" style="height:16px;margin-top:12px"></div>
+<div class="M" style="font-size:10.5px;letter-spacing:.1em;margin-top:8px;color:var(--mint)">ISSUED — CONDITIONAL BY DESIGN<br>ILLUSTRATIVE DEMO VALUES — NOT A REAL SITE</div></div></div>
+<div class="ab" style="left:64px;right:64px;top:566px;display:flex;gap:18px">
+<div class="cl" style="background:var(--mint)"><div class="h" style="font-size:15px">Bounded</div><p>Size, time and ramp are capped.</p></div>
+<div class="cl" style="background:var(--bt)"><div class="h" style="font-size:15px">Conditional</div><p>Confidence-rated; contracts on bad inputs.</p></div>
+<div class="cl" style="background:var(--bg)"><div class="h" style="font-size:15px">Verified</div><p>Delivered vs promised, after every event.</p></div></div>
+<div class="src" data-r="R3 R12 R4"></div>
+</section>
+
+<!-- 07 ARCHITECTURE -->
+<section class="s">
+<div class="hd"><span>05 — Tech / system architecture</span><span>FP—07 / 12</span></div>
+<h1 class="t" style="font-size:42px">Five layers. Zero changes to protection logic.</h1>
+<div class="ab" style="left:64px;right:64px;top:158px;display:flex;gap:44px;align-items:stretch"><div style="flex:1;display:flex;flex-direction:column;gap:9px">
+<style>.ly{display:flex;gap:16px;align-items:center;border:2px solid var(--ink);background:var(--bg);padding:15px 18px}.ly .A{font-size:34px;width:46px;color:var(--g)}.ly .h{width:190px;font-size:15px;flex:none}.ly p{font-size:14.5px;line-height:1.38;color:#33332F}</style>
+<div class="ly"><span class="A">05</span><span class="h">Verification</span><p>Compares promised vs delivered; records the minimum reserve actually held.</p></div>
+<div class="ly"><span class="A">04</span><span class="h">Action</span><p>Time-bound plan + audit trail. Pilot: read-only, or bounded operator-approved commands.</p></div>
+<div class="ly" style="background:var(--g);color:var(--bg);border:4px solid var(--ink);box-shadow:7px 7px 0 var(--ink);padding:28px 18px;margin:4px 0"><span class="A" style="color:var(--bt);font-size:46px;width:56px">03</span><span class="h" style="font-size:19px;width:190px">Flexibility engine</span><p style="color:var(--bg);font-size:14.5px">Finds the largest load reduction that satisfies ALL hard constraints. Flexibility is conditional — never a fixed battery-size number.</p></div>
+<div class="ly"><span class="A">02</span><span class="h">State + constraints</span><p>Telemetry becomes state. Hard limits: reserve · thermal · hydraulic · battery · criticality · recovery.</p></div>
+<div class="ly"><span class="A">01</span><span class="h">Inputs</span><p>Grid and rack power, criticality, UPS/BESS SOC, generator, cooling flows, weather, water, tariff signals.</p></div></div>
+<div style="width:340px;flex:none;display:flex;flex-direction:column;justify-content:space-between;background:var(--gd);color:var(--bg);padding:22px 24px;border:3px solid var(--ink);box-shadow:7px 7px 0 var(--mint)">
+<div class="M" style="font-size:11px;letter-spacing:.14em;color:var(--mint)">THE CONTROL LOGIC</div>
+<div class="A" style="font-size:30px;line-height:1.1;margin:8px 0">Maximise usable grid reduction</div>
+<div class="M" style="font-size:11px;letter-spacing:.1em;color:var(--bt)">SUBJECT TO</div>
+<ul class="b" style="list-style:none;color:var(--bg);margin-top:6px;line-height:1.75;font-size:14.5px"><li>■ minimum reliability reserve</li><li>■ thermal + hydraulic limits</li><li>■ battery operating limits</li><li>■ workload criticality</li><li>■ recovery requirements</li></ul>
+<p class="M" style="font-size:11px;line-height:1.5;margin-top:14px;color:var(--mint);border-top:2px solid var(--mint);padding-top:10px">OUTPUT ≠ “USE THE BATTERY”. OUTPUT = A PORTFOLIO ACROSS COMPUTE · COOLING · STORAGE.</p></div></div>
+<div class="src" data-r="R6 R7 R13 D5"></div>
+</section>
+
+<!-- 08 INTELLIGENCE -->
+<section class="s">
+<div class="hd"><span>06 — Tech / intelligence layer</span><span>FP—08 / 12</span></div>
+<h1 class="t" style="font-size:42px">The envelope is a prediction — not a calculation.</h1>
+<p class="sub" style="max-width:1100px;color:#33332F;font-size:16.5px;margin-top:8px">The engine solves against constraints that are estimated, not measured. A facility knows its temperature — not how fast the hall heats if cooling backs off for twelve minutes. Five learned models close those gaps.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px">
+<style>.m{padding:18px 20px}.m .b{font-size:14.5px;line-height:1.42;margin-top:5px}.m .h{font-size:16.5px}</style>
+<div class="card m"><div class="num">01</div><div class="h">Thermal response</div><p class="b">Learned surrogate: hall conditions, IT load, setpoints and ambient → a 5–30 min temperature trajectory. Sets pre-cooling headroom without per-site physics calibration.</p></div>
+<div class="card m"><div class="num">02</div><div class="h">Load + ramp forecast</div><p class="b">AI workloads step, they don't curve. Quantile regression sizes the commitment on the upper quantile and sources the Passport's CONFIDENCE field.</p></div>
+<div class="card m"><div class="num">03</div><div class="h">Usable energy</div><p class="b">Nameplate and SOC overstate what a battery delivers. Regression on discharge history estimates energy above reserve — overestimating is what erodes it.</p></div>
+<div class="card m"><div class="num">04</div><div class="h">Workload deferrability</div><p class="b">Most facilities keep no criticality register. Telemetry classifies jobs as deferrable, throttleable or protected; operator overrides become training signal.</p></div>
+<div class="card m"><div class="num">05</div><div class="h">Explanation</div><p class="b">A language model writes the justification for every recommendation and blocked action: what was proposed, which constraint bound, what would unlock more.</p></div>
+<div class="card m" style="background:var(--gd);color:var(--bg)"><div class="num" style="color:var(--bt)">FAILING SAFE</div><p class="b" style="color:var(--bg);margin-top:4px">Confidence is an input to the envelope, not a footnote. Stale telemetry, out-of-distribution models or high forecast variance contract it automatically.</p></div>
+</div>
+<div class="A" style="margin-top:24px;font-size:27px;letter-spacing:.02em;background:var(--gd);color:var(--bt);padding:14px 24px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--mint)">Degraded inputs produce smaller promises — never unsafe ones.</div>
+<div class="src" data-r="R6 R7 R13 R15 R3"></div>
+</section>
+
+<!-- 09 SCHNEIDER FIT -->
+<section class="s s9">
+<div class="hd"><span>07 — Fit / Schneider alignment</span><span>FP—09 / 12</span></div>
+<h1 class="t" style="font-size:46px">Above Schneider — never instead of it.</h1>
+<div style="display:flex;gap:36px;margin-top:22px">
+<div style="flex:1"><div class="G" style="font-size:19px;text-transform:uppercase;margin-bottom:12px">Why it plugs into EcoStruxure</div>
+<div class="card" style="margin-bottom:14px"><span class="num">01</span><p class="b">EcoStruxure IT Advisor is already a vendor-agnostic DCIM and digital-twin platform for power, cooling, environmental and asset data.</p></div>
+<div class="card" style="margin-bottom:14px"><span class="num">02</span><p class="b">The Passport consumes that telemetry and asset model. It does not rebuild the monitoring stack.</p></div>
+<div class="card" style="background:var(--bt)"><span class="num">03</span><p class="b" style="color:var(--ink);font-weight:600">The problem narrows to one decision: “What may the whole facility safely promise right now?”</p></div></div>
+<div style="flex:1"><div class="G" style="font-size:19px;text-transform:uppercase;margin-bottom:12px">Deliberate guardrails</div>
+<div class="card" style="margin-bottom:14px;background:var(--mint);display:flex;gap:14px"><span class="G" style="font-size:24px;color:var(--g)">✕</span><p class="b"><b>Does not replace</b> EcoStruxure, a BMS or hard electrical protection — they stay the control layer and system of record.</p></div>
+<div class="card" style="margin-bottom:14px;background:var(--mint);display:flex;gap:14px"><span class="G" style="font-size:24px;color:var(--g)">✕</span><p class="b"><b>Does not require</b> live utility-market integration. First value is operational: peaks, diesel, storage use.</p></div>
+<div class="card" style="background:var(--mint);display:flex;gap:14px"><span class="G" style="font-size:24px;color:var(--g)">✕</span><p class="b"><b>Does not autonomously override</b> critical protection. The facility's reliability policy stays authoritative.</p></div></div></div>
+<div class="G ab" style="left:64px;right:64px;bottom:60px;font-size:19px;background:var(--gd);color:var(--bg);padding:16px 24px;border:3px solid var(--ink);box-shadow:6px 6px 0 var(--mint)">An optimisation layer with a governance contract — not an uncontrolled protection system.</div>
+<div class="src" data-r="D4 D5 D3"></div>
+</section>
+
+<!-- 10 PROOF -->
+<section class="s">
+<div class="hd"><span>08 — Demo + validation</span><span>FP—10 / 12</span></div>
+<h1 class="t" style="font-size:42px">Judge us on safety — not on polish.</h1>
+<p class="sub" style="font-size:16.5px;color:#33332F;max-width:1100px">A 3D twin explains it; a live simulation is the evidence — synthetic data, random outages, a hard reserve constraint.</p>
+<style>.bt{flex:1;border:2px solid var(--ink);background:var(--bg);padding:12px 13px}.bt .num{font-size:11px}.bt .G{font-size:14.5px;line-height:1.2;text-transform:uppercase;margin:3px 0 5px}.bt p{font-size:13.5px;line-height:1.38;color:#33332F}</style>
+<div style="display:flex;gap:8px;margin-top:20px;align-items:stretch">
+<div class="bt"><div class="num">01</div><div class="G">Normal ops</div><p>Live load, cooling, reserve</p></div>
+<div class="bt"><div class="num">02</div><div class="G">Grid-stress event</div><p>Envelope computed</p></div>
+<div class="bt"><div class="num">03</div><div class="G">Coordinated plan</div><p>Every lever visible</p></div>
+<div style="flex:2.1;display:flex;gap:6px;background:var(--bt);border:3px solid var(--ink);padding:6px;position:relative"><span class="M ab" style="top:-11px;left:10px;background:var(--bg);font-size:10px;font-weight:700;letter-spacing:.12em;padding:0 6px">SIDE-BY-SIDE</span>
+<div class="bt" style="border-width:0;background:transparent"><div class="num">04</div><div class="G">Naive peak-shaving</div><p>Overdraws the BESS</p></div>
+<div class="bt" style="border-width:0;background:transparent"><div class="num">05</div><div class="G">Inject outage</div><p>Passport survives; naive runs short</p></div></div>
+<div class="bt" style="background:var(--mint)"><div class="num">06 · NEW</div><div class="G">Bad input</div><p>Envelope shrinks</p></div>
+<div class="bt" style="background:var(--mint)"><div class="num">07 · NEW</div><div class="G">Blocked action</div><p>Shown with its reason</p></div>
+<div class="bt"><div class="num">08</div><div class="G">Verification</div><p>Promised vs delivered</p></div>
+</div>
+<div class="M" style="margin:20px 0 10px;font-size:12px;letter-spacing:.14em;font-weight:700">PASS = ALL FIVE CONDITIONS — SAFETY WEIGHS MOST</div>
+<style>.pc{flex:1;border:3px solid var(--ink);padding:16px 16px 18px;box-shadow:5px 5px 0 var(--ink);background:var(--bg)}.pc .A{font-size:30px;color:var(--g)}.pc p{font-size:15px;line-height:1.42;margin-top:6px}</style>
+<div style="display:flex;gap:16px">
+<div class="pc" style="flex:1.7;background:var(--g);color:var(--bg)"><div class="A" style="color:var(--bt)">Safety</div><p>Never violates the chosen reserve/SLA in defined outage scenarios.</p></div>
+<div class="pc"><div class="A">Usefulness</div><p>Meaningful peak reduction in defined normal scenarios.</p></div>
+<div class="pc"><div class="A">Transparency</div><p>Every action shows its contribution and a constraint reason.</p></div>
+<div class="pc"><div class="A">Verification</div><p>Promised vs delivered flexibility and reserve, after every event.</p></div>
+<div class="pc"><div class="A">Demo</div><p>The whole concept understood from a short 3D event replay.</p></div></div>
+<div class="A" style="position:absolute;left:64px;right:64px;bottom:58px;font-size:19px;letter-spacing:.02em;background:var(--gd);color:var(--bt);padding:10px 22px;border:3px solid var(--ink)">Pass = a safe conversion of physical facility state into a credible flexibility commitment.</div>
+<div class="src" data-r="R6 R13 R3"></div>
+</section>
+
+<!-- 11 VALUE -->
+<section class="s">
+<div class="hd"><span>09 — Business viability + impact</span><span>FP—11 / 12</span></div>
+<h1 class="t" style="font-size:44px">Operational value now. <span class="hl">Market value next.</span></h1>
+<style>.v{flex:1;padding:18px 18px 20px}.v .h{font-size:17px;margin:4px 0 6px}.v .b{font-size:15px;line-height:1.42}</style>
+<div style="display:flex;gap:18px;margin-top:18px">
+<div class="card v"><div class="num">01</div><div class="h">Peak cost ↓</div><p class="b">Lower exposure where tariffs reward lower maximum demand.</p></div>
+<div class="card v"><div class="num">02</div><div class="h">Diesel opex ↓</div><p class="b">Stored energy and flexible load replace generator runs in non-outage events.</p></div>
+<div class="card v"><div class="num">03</div><div class="h">DR-ready revenue</div><p class="b">A credible commitment unlocks future demand response — upside, not a pilot dependency.</p></div>
+<div class="card v"><div class="num">04</div><div class="h">Idle reserve, used</div><p class="b">Flexibility that over-conservatism leaves untapped becomes usable — a hypothesis the pilot tests.</p></div></div>
+<div style="background:var(--bt);border:3px solid var(--ink);padding:16px 22px;margin-top:22px;font-size:16.5px;line-height:1.45"><b class="G">CATEGORY DE-RISKED —</b> Google's demand-flexible compute and Microsoft's power capping across millions of servers prove the behaviour; both are proprietary hyperscaler stacks. <b>That gap is our opening.</b></div>
+<style>.e{flex:1;border-top:4px solid var(--g);padding:14px 0 0}.e .A{font-size:30px;color:var(--g);line-height:1}.e .b{font-size:15px;line-height:1.42;margin-top:6px}</style>
+<div style="display:flex;gap:34px;margin-top:28px">
+<div class="e"><div class="A">E · Environmental</div><p class="b">Peak and diesel reductions cut grid draw in stressed hours; water and thermal limits live inside the envelope.</p></div>
+<div class="e"><div class="A">S · Social / resilience</div><p class="b">Load falls without silently eroding uptime; an action log shows who contributed and why something was blocked.</p></div>
+<div class="e"><div class="A">G · Governance</div><p class="b">Every commitment is time-bound and tied to a reliability threshold; promised vs delivered is always recorded.</p></div></div>
+<p class="M ab" style="left:64px;right:64px;bottom:54px;font-size:11.5px;color:var(--gr)">Quantified ROI is a pilot output, not an assumption — measured on tariff, diesel cost, load profile, battery policy and baseline.</p>
+<div class="src" data-r="R1 R12 D1 D2"></div>
+</section>
+
+<!-- 12 CLOSE -->
+<section class="s dk">
+<div class="hd"><span>10 — Close</span><span class="n">FP—12 / 12</span></div>
+<div class="ab" style="left:64px;top:92px;width:800px">
+<div class="A" style="font-size:70px;line-height:1.05">Data centres don't need</div>
+<div class="A out" style="font-size:70px;line-height:1.05;text-decoration:line-through;text-decoration-thickness:6px;text-decoration-color:var(--bt)">new infrastructure.</div>
+<div class="A" style="font-size:52px;line-height:1.35;margin-top:20px"><span class="hb">They need to unlock</span><br><span class="hb">the capacity they already have.</span></div>
+<p style="font-size:16px;line-height:1.5;color:var(--mint);max-width:600px;margin-top:18px">Not another battery. Not another dashboard — proof of when electrical, thermal and computational buffers can be used together without crossing a reliability threshold.</p>
+<div style="display:flex;gap:12px;margin-top:16px"><span class="pill">VISIBLE</span><span class="pill">AUDITABLE</span><span class="pill">TESTABLE</span></div></div>
+<div class="ab tilt" style="left:904px;right:64px;top:104px;height:462px;background:var(--g);border:3px solid var(--bg);box-shadow:8px 8px 0 var(--bg);padding:24px 24px 20px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="display:flex;justify-content:space-between;align-items:flex-start"><div class="M" style="font-size:10.5px;letter-spacing:.12em;color:var(--mint);line-height:1.6">FLEXIBILITY PASSPORT<br>FP—001</div><span class="A sp" style="font-size:30px;line-height:1;color:var(--bt)">✦</span></div>
+<div><div class="M" style="font-size:10.5px;letter-spacing:.12em;color:var(--mint)">CAPACITY ALREADY OWNED</div><div class="A" style="font-size:80px;line-height:1.1;color:var(--bt)">+<span data-k="0">420</span> kW</div><div class="G" style="font-size:18px">unlocked for <span data-k="1">18</span> min</div></div>
+<div class="M" style="font-size:11.5px;letter-spacing:.06em;line-height:1"><div style="display:flex;justify-content:space-between;border-top:2px solid var(--mint);padding:9px 0">RESERVE<b>PROTECTED</b></div><div style="display:flex;justify-content:space-between;border-top:2px solid var(--mint);padding:9px 0">RAMP<b>≤ <span data-k="2">150</span> KW/MIN</b></div><div style="display:flex;justify-content:space-between;border-top:2px solid var(--mint);padding:9px 0">STATUS<b>ISSUED</b></div></div>
+<div><div class="bar" style="height:20px"></div><div class="M" style="font-size:10px;letter-spacing:.1em;margin-top:8px;color:var(--mint)">ILLUSTRATIVE DEMO VALUES</div></div>
+<span class="M" style="position:absolute;top:-17px;left:-20px;transform:rotate(-7deg);background:var(--gd);border:3px solid var(--bg);padding:5px 12px;font-size:11px;font-weight:700;letter-spacing:.12em">UNLOCKED</span></div>
+<div class="ab stripe" style="left:64px;right:64px;bottom:124px"></div>
+<div class="ab M" style="left:64px;right:64px;bottom:60px;border:2px solid var(--bg);padding:12px 18px;font-size:13px;letter-spacing:.04em">&lt;team_name&gt; · Dhruv · Divyansh · Gautam · PES University · &lt;contact&gt;</div>
+<div class="src" data-r="D6 R1"></div>
+</section>
+</div>
+
+<div class="nav"><button id="pv" aria-label="Previous">‹</button><button id="nx" aria-label="Next">›</button></div>
+<script>
+const L={R1:['CEEW India','https://www.ceew.in/publications/how-is-data-centre-infrastructure-in-india-shaping-power-and-water-use'],
+R3:['Risk-aware BESS dispatch','https://doi.org/10.1109/ACCESS.2026.3682635'],
+R4:['Grid-forming BESS','https://doi.org/10.1016/j.ijepes.2026.111638'],
+R6:['Digital-twin cooling','https://arxiv.org/abs/2603.01198'],
+R7:['Cooling co-design','https://arxiv.org/abs/2605.15516'],
+R8:['Workload–thermal coupling','https://doi.org/10.1016/j.energy.2026.141508'],
+R9:['DC flexibility review','https://doi.org/10.1016/j.egyr.2025.03.020'],
+R10:['DR load modelling','https://doi.org/10.1016/j.apenergy.2025.126095'],
+R12:['BESS reliability','https://doi.org/10.1016/j.enconman.2025.119951'],
+R13:['RL liquid cooling','https://doi.org/10.1109/itherm55376.2025.11235634'],
+R15:['GPU power','https://www.microsoft.com/en-us/research/uploads/prod/2024/03/GPU_Power_ASPLOS_24.pdf'],
+D1:['Google DR','https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/how-were-making-data-centers-more-flexible-to-benefit-power-grids/'],
+D2:['Microsoft capping','https://www.microsoft.com/en-us/research/project/power-capping/'],
+D3:['Schneider DLC','https://www.se.com/ww/en/download/document/SPD_WP210_EN/'],
+D4:['EcoStruxure IT','https://www.se.com/ie/en/product-range/66103-ecostruxure-it-advisor/117854402438-cooling-optimize/'],
+D5:['Schneider RD48','https://www.se.com/uk/en/download/document/RD48DSR0_EN/'],
+D6:['IEA Energy & AI','https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai']};
+document.querySelectorAll('.src').forEach(e=>{e.innerHTML='<b>SOURCES</b>'+e.dataset.r.split(' ').map(k=>`<a href="${L[k][1]}" target="_blank" rel="noopener noreferrer">${k} ${L[k][0]}</a>`).join('')});
+const S=[...document.querySelectorAll('.s')],D=document.getElementById('deck');let i=0;
+const SEL='.card,.pc,.bt,.ly,.st,.f,.m,.v,.e,.cl,.tc,.pill';
+S.forEach(s=>{let n=0;const w=p=>[...p.children].forEach(c=>{if(/^(STYLE|SCRIPT)$/.test(c.tagName)||c.matches('.hd,.src,.sp,.arw'))return;if(!c.matches(SEL)&&c.querySelector(SEL))return w(c);c.classList.add('rv');c.style.setProperty('--d',Math.min(n++*65,1300)+180+'ms')});w(s)});
+function scr(s){s.querySelectorAll('.big').forEach(el=>{const T=el.dataset.t||(el.dataset.t=el.textContent),t0=performance.now(),id=setInterval(()=>{const n=performance.now()-t0;let L=0;el.textContent=[...T].map(c=>/\d/.test(c)?(n>500+(L++)*160?c:Math.floor(Math.random()*10)):c).join('');if(n>500+T.length*160){el.textContent=T;clearInterval(id)}},50)})}
+function go(n){const p=i;i=Math.max(0,Math.min(S.length-1,n));D.className=i>=p?'fw':'bk';S.forEach((s,k)=>s.classList.toggle('on',k==i));document.getElementById('pg').style.width=(i+1)/S.length*100+'%';scr(S[i])}
+addEventListener('mousemove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;S[i].querySelectorAll('.tilt').forEach(t=>t.style.transform='perspective(900px) rotateY('+x*10+'deg) rotateX('+(-y*8)+'deg)')});
+function fit(){D.style.transform='scale('+Math.min(innerWidth/1280,innerHeight/720)+')'}
+addEventListener('resize',fit);fit();
+let tutOn=true;const tutEl=document.getElementById('tut');
+function tut(v){tutOn=v;tutEl.classList.toggle('x',!v);if(!v){const c=S[i];c.classList.remove('on');void c.offsetWidth;c.classList.add('on');scr(c)}}
+document.getElementById('go').onclick=()=>tut(false);
+addEventListener('keydown',e=>{const k=e.key;
+if(tutOn){if(k=='Enter'||k=='Escape'){e.preventDefault();tut(false)}return}
+if(k=='?'||k=='/'){tutOn=true;tutEl.classList.remove('x');return}
+if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].includes(k)){e.preventDefault();go(i+1)}
+else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].includes(k)){e.preventDefault();go(i-1)}
+else if(k=='Home')go(0);else if(k=='End')go(S.length-1);
+else if(k=='f'||k=='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}});
+document.getElementById('pv').onclick=()=>go(i-1);document.getElementById('nx').onclick=()=>go(i+1);
+let x0=null;addEventListener('touchstart',e=>x0=e.touches[0].clientX);addEventListener('touchend',e=>{if(x0!==null&&!tutOn){const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>50)go(i+(d<0?1:-1));x0=null}});
+const R=[[380,460],[14,24],[110,190],[38,50],[10,14]],ks=[...document.querySelectorAll('[data-k]')];
+function spin(){ks.forEach(el=>{const[a,b]=R[+el.dataset.k],T=String(a+Math.floor(Math.random()*(b-a+1))),t0=performance.now(),id=setInterval(()=>{const n=performance.now()-t0;el.textContent=[...T].map((c,i)=>n>700+i*350?c:Math.floor(Math.random()*10)).join('');if(n>700+T.length*350){el.textContent=T;clearInterval(id)}},50)})}
+if(!matchMedia('(prefers-reduced-motion:reduce)').matches){setTimeout(spin,600);setInterval(spin,3600)}
+go(0);
+</script></body></html>
